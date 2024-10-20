@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Zelda';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Zelda.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Zelda, Courier, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
