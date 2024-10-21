@@ -1,0 +1,27 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 48px;
+    gap: 12px;
+
+    .under-title {
+      font-size: 18px;
+    }
+  }
+  .shkatulkas-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 512px;
+    justify-content: center;
+  }
+}

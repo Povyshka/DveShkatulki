@@ -1,0 +1,38 @@
+.shkatulka {
+  // font-family: Monocraft, Courier, sans-serif;
+  background-size: contain;
+  &-close {
+    background: url('../../../../public/shkatulka/shkatulka-close.png')
+      no-repeat;
+    width: 480px;
+    height: 400px;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(110%);
+      cursor: pointer;
+    }
+  }
+  &-open {
+    background: url('../../../../public/shkatulka/shkatulka-open.png') no-repeat;
+    width: 480px;
+    height: 500px;
+  }
+}
+.gift {
+  width: 512px;
+  position: relative;
+  top: -500px;
+  scale: 0;
+  height: auto;
+  transition: scale 0.6s, transform 0.6s, opacity 0.6s, visibility 0.6s;
+  opacity: 0;
+  visibility: hidden;
+}
+.shkatulka-wrapper:has(.shkatulka-open) {
+  .gift {
+    scale: 100%;
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+  }
+}
