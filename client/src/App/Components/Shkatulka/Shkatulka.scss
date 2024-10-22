@@ -1,38 +1,150 @@
 .shkatulka {
-  // font-family: Monocraft, Courier, sans-serif;
   background-size: contain;
-  &-close {
+  &-left-close,
+  &-right-close {
     background: url('../../../../public/shkatulka/shkatulka-close.png')
       no-repeat;
     width: 480px;
     height: 400px;
-    transition: transform 0.3s;
+    transition: transform 0.5s;
+
     &:hover {
-      transform: scale(110%);
+      transform: scale(115%);
       cursor: pointer;
     }
   }
-  &-open {
+
+
+  // анимация на открытие - движение к центру и тряска
+  &-left-close.animate-open {
+    transform: scale(115%);
+    animation: move-left-to-center 1s ease-in-out forwards,
+      left-shaker 1.5s linear 1s forwards;
+  }
+  &-right-close.animate-open {
+    transform: scale(115%);
+    animation: move-right-to-center 1s ease-in-out forwards,
+      right-shaker 1.5s linear 1s forwards;
+  }
+
+  // открытая шкатулка
+  &-left-open,
+  &-right-open {
     background: url('../../../../public/shkatulka/shkatulka-open.png') no-repeat;
     width: 480px;
     height: 500px;
   }
+  &-left-open {
+    transform: translateX(57%) scale(115%);
+  }
+  &-right-open {
+    transform: translateX(-51%) scale(115%);
+  }
 }
+
+// сами анимации 
+@keyframes move-left-to-center {
+  100% {
+    right: 55%;
+    transform: translateX(55%) scale(115%);
+  }
+}
+@keyframes move-right-to-center {
+  100% {
+    left: 53%;
+    transform: translateX(-53%) scale(115%);
+  }
+}
+
+@keyframes left-shaker {
+  0% {
+    transform: translateX(55%) scale(115%) rotate(0deg);
+  }
+  10% {
+    transform: translateX(55%) scale(115%) rotate(3deg);
+  }
+  20%,
+  40%,
+  57%,
+  80% {
+    transform: translateX(55%) scale(115%) rotate(-3deg);
+  }
+  30%,
+  57%,
+  70% {
+    transform: translateX(55%) scale(115%) rotate(3deg);
+  }
+  90% {
+    transform: translateX(55%) scale(115%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(55%) scale(1) rotate(0deg);
+  }
+}
+@keyframes right-shaker {
+  0% {
+    transform: translateX(-53%) scale(115%) rotate(0deg);
+  }
+  10% {
+    transform: translateX(-53%) scale(115%) rotate(3deg);
+  }
+  20%,
+  40%,
+  57%,
+  80% {
+    transform: translateX(-53%) scale(115%) rotate(-3deg);
+  }
+  30%,
+  57%,
+  70% {
+    transform: translateX(-53%) scale(115%) rotate(3deg);
+  }
+  90% {
+    transform: translateX(-53%) scale(115%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(-53%) scale(1) rotate(0deg);
+  }
+}
+
+// подарок
 .gift {
   width: 512px;
   position: relative;
   top: -500px;
   scale: 0;
   height: auto;
-  transition: scale 0.6s, transform 0.6s, opacity 0.6s, visibility 0.6s;
+  transition: scale 1s, transform 1s, opacity 1s, visibility 1s;
   opacity: 0;
   visibility: hidden;
 }
-.shkatulka-wrapper:has(.shkatulka-open) {
+
+
+// анимация подарка
+.shkatulka-wrapper:has(.shkatulka-left-open),
+.shkatulka-wrapper:has(.shkatulka-right-open) {
   .gift {
-    scale: 100%;
+    scale: 110%;
     transform: translateY(0px);
     opacity: 1;
     visibility: visible;
   }
 }
+.shkatulka-wrapper:has(.shkatulka-left-open) {
+  .gift {
+    left: 50%;
+    // animation: gift-appear 0.6s forwards;
+  }
+}
+.shkatulka-wrapper:has(.shkatulka-right-open) {
+  .gift {
+    right: 50%;
+  }
+}
+
+// анимация правой шкатулки когда ее не выбрали
+// .shkatulka-wrapper:has(.shkatulka-left-close.animate-open ) {
+//   .shkatulka-right-close {
+
+//   }
+// }

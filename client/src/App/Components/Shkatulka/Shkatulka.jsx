@@ -3,10 +3,10 @@ import Cookies from 'js-cookie'
 import './Shkatulka.scss'
 import { getGift } from '../../getGift/getGift'
 
-export default function Shkatulka() {
+export default function Shkatulka({ position }) {
   const [result, setResult] = useState(null)
+  const [isAnimating, setIsAnimating] = useState(false)
 
-  // Загружаем состояние с сервера или инициализируем
   useEffect(() => {
     const hasAttempted = Cookies.get('hasAttempted')
     if (hasAttempted) {
@@ -15,21 +15,30 @@ export default function Shkatulka() {
   }, [])
 
   const openBox = () => {
-    const gift = getGift()
-    console.log('gift', gift)
+    if (!isAnimating && !result) {
+      setIsAnimating(true)
+      const gift = getGift()
+      console.log('gift', gift)
 
-    setResult(gift)
-    // Cookies.set('hasAttempted', JSON.stringify(gift), { expires: 7 })
+      // Начинаем анимацию и устанавливаем результат после ее завершения
+      setTimeout(() => {
+        setResult(gift)
+        setIsAnimating(false)
+        // Cookies.set('hasAttempted', JSON.stringify(gift), { expires: 7 });
+      }, 2600) // Время должно соответствовать длительности анимации
+    }
   }
 
   return (
     <div className="shkatulka-wrapper">
       <div
-        className={`shkatulka shkatulka-${result ? 'open' : 'close'}`}
-        onClick={() => openBox()}
+        className={`shkatulka shkatulka-${position}-${result ? 'open' : 'close'} ${
+          isAnimating ? 'animate-open' : ''
+        }`}
+        onClick={openBox}
       ></div>
 
-      <img className="gift" src={`/gifts/${result}`} alt={'gift'} />
+      <img className="gift" src={`/gifts/${result}`} alt="gift" />
     </div>
   )
 }

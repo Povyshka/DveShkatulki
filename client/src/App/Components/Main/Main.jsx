@@ -10,8 +10,8 @@ export default function Main() {
         <div className="under-title">у тебя есть только одна попытка</div>
       </div>
       <div className='shkatulkas-container'>
-        <Shkatulka/>
-        <Shkatulka/>
+        <Shkatulka position={"left"}/>
+        <Shkatulka position={"right"}/>
       </div>
     </div>
   )
