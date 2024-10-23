@@ -1,3 +1,6 @@
+.shkatulka-wrapper {
+  height: 512px;
+}
 .shkatulka {
   background-size: contain;
   &-left-close,
@@ -14,17 +17,16 @@
     }
   }
 
-
   // анимация на открытие - движение к центру и тряска
   &-left-close.animate-open {
     transform: scale(115%);
     animation: move-left-to-center 1s ease-in-out forwards,
-      left-shaker 1.5s linear 1s forwards;
+      shaker 1.5s linear 1s forwards;
   }
   &-right-close.animate-open {
     transform: scale(115%);
     animation: move-right-to-center 1s ease-in-out forwards,
-      right-shaker 1.5s linear 1s forwards;
+      shaker 1.5s linear 1s forwards;
   }
 
   // открытая шкатулка
@@ -33,118 +35,108 @@
     background: url('../../../../public/shkatulka/shkatulka-open.png') no-repeat;
     width: 480px;
     height: 500px;
-  }
-  &-left-open {
-    transform: translateX(57%) scale(115%);
-  }
-  &-right-open {
-    transform: translateX(-51%) scale(115%);
+    transform: scale(115%);
+    animation: fadeOutOpen 1s 1s forwards;
   }
 }
 
-// сами анимации 
+// сами анимации
 @keyframes move-left-to-center {
   100% {
-    right: 55%;
-    transform: translateX(55%) scale(115%);
+    right: 50%;
+    transform: translateX(50%) scale(115%);
   }
 }
 @keyframes move-right-to-center {
   100% {
-    left: 53%;
-    transform: translateX(-53%) scale(115%);
+    left: 50%;
+    transform: translateX(-50%) scale(115%);
   }
 }
 
-@keyframes left-shaker {
+@keyframes shaker {
   0% {
-    transform: translateX(55%) scale(115%) rotate(0deg);
+    transform: scale(115%) rotate(0deg);
   }
   10% {
-    transform: translateX(55%) scale(115%) rotate(3deg);
+    transform: scale(115%) rotate(3deg);
   }
   20%,
   40%,
   57%,
   80% {
-    transform: translateX(55%) scale(115%) rotate(-3deg);
+    transform: scale(115%) rotate(-3deg);
   }
   30%,
   57%,
   70% {
-    transform: translateX(55%) scale(115%) rotate(3deg);
+    transform: scale(115%) rotate(3deg);
   }
   90% {
-    transform: translateX(55%) scale(115%) rotate(-1deg);
+    transform: scale(115%) rotate(-1deg);
   }
   100% {
-    transform: translateX(55%) scale(1) rotate(0deg);
-  }
-}
-@keyframes right-shaker {
-  0% {
-    transform: translateX(-53%) scale(115%) rotate(0deg);
-  }
-  10% {
-    transform: translateX(-53%) scale(115%) rotate(3deg);
-  }
-  20%,
-  40%,
-  57%,
-  80% {
-    transform: translateX(-53%) scale(115%) rotate(-3deg);
-  }
-  30%,
-  57%,
-  70% {
-    transform: translateX(-53%) scale(115%) rotate(3deg);
-  }
-  90% {
-    transform: translateX(-53%) scale(115%) rotate(-1deg);
-  }
-  100% {
-    transform: translateX(-53%) scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
   }
 }
 
 // подарок
 .gift {
-  width: 512px;
   position: relative;
   top: -500px;
-  scale: 0;
+  right: -50px;
+  width: auto;
   height: auto;
+  max-height: 400px;
+  scale: 0;
   transition: scale 1s, transform 1s, opacity 1s, visibility 1s;
   opacity: 0;
   visibility: hidden;
 }
 
-
 // анимация подарка
 .shkatulka-wrapper:has(.shkatulka-left-open),
 .shkatulka-wrapper:has(.shkatulka-right-open) {
   .gift {
-    scale: 110%;
+    scale: 100%;
     transform: translateY(0px);
     opacity: 1;
     visibility: visible;
   }
 }
-.shkatulka-wrapper:has(.shkatulka-left-open) {
-  .gift {
-    left: 50%;
-    // animation: gift-appear 0.6s forwards;
-  }
+
+// исчезновение шкатулки закрытой
+.shkatulka.fade-out {
+  animation: fadeOut 1s forwards;
 }
-.shkatulka-wrapper:has(.shkatulka-right-open) {
-  .gift {
-    right: 50%;
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
 
-// анимация правой шкатулки когда ее не выбрали
-// .shkatulka-wrapper:has(.shkatulka-left-close.animate-open ) {
-//   .shkatulka-right-close {
+// исчезновение шкатулки открытой тк у нее скейл другой
+@keyframes fadeOutOpen {
+  0% {
+    opacity: 1;
+    transform: scale(115%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
 
-//   }
-// }
+//уже полученный подарок
+.gift.opened {
+  scale: 100%;
+  opacity: 1;
+  visibility: visible;
+  position: static;
+}
