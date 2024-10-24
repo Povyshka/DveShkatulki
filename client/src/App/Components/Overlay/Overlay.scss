@@ -1,0 +1,62 @@
+.overlay-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: linear-gradient(148deg, #2a005d, #5d0086);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease;
+  z-index: 1000;
+}
+
+.overlay-body.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay-text {
+  opacity: 0;
+  animation: fadeInOut 6s forwards;
+  color: white;
+  text-align: center;
+  top: 20%;
+  position: absolute;
+  display: inline-block;
+}
+
+.typed-text {
+  overflow: hidden;
+  font-size: 44px;
+  white-space: nowrap;
+  width: 0;
+  padding: 5px 0;
+  animation: typing 1s steps(20, end) forwards;
+  animation-delay: 1s;
+  &.second {
+    animation-delay: 2s;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

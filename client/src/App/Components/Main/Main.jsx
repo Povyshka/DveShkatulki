@@ -20,16 +20,14 @@ export default function Main() {
     }
   }, [])
 
-  console.log('giftInfo', giftInfo)
-
   const chooseBox = position => {
     if (!selectedBox) {
       // Таймер для удаления другой шкатулки после завершения анимации
       setFadingBox(position === 'left' ? 'right' : 'left')
       setTimeout(() => {
         setSelectedBox(position)
-        setMessage('Итак,')
-      }, 1000)
+        setMessage('Да ладно!?')
+      }, 1100)
     }
   }
 
@@ -44,7 +42,7 @@ export default function Main() {
         </div>
       ) : (
         <div className="title">
-          Я же говорю, одна попытка!
+          У тебя была только одна попытка!
           <div className={`under-title-gift`}>Твой приз:</div>
         </div>
       )}

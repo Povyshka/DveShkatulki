@@ -32,6 +32,7 @@ export default function Shkatulka({
         setIsAnimating(false)
         setMessage('Поздравляю, твой приз:')
       }, 2600)
+      
       setTimeout(() => {
         setGiftName(gift.name)
         Cookies.set('dveShkatulki', JSON.stringify(gift), { expires: 7 });
@@ -46,6 +47,7 @@ export default function Shkatulka({
           result ? 'open' : 'close'
         } ${isAnimating ? 'animate-open' : ''} ${isFading ? 'fade-out' : ''}`}
         onClick={openBox}
+        title={`${position === 'left' ? 'Левая?' : 'Правая?' }`}
       ></div>
 
       <img className="gift" src={`/gifts/${result?.url}`} alt="gift" />
