@@ -35,6 +35,7 @@
     background-size: contain;
     transform: scale(115%);
     animation: fadeOutOpen 1s 1s forwards;
+    margin: 0 auto;
   }
 }
 
@@ -136,4 +137,61 @@
   opacity: 1;
   visibility: visible;
   position: static;
+}
+
+@media screen and (max-width: 968px) {
+  .shkatulka {
+    &-left-close,
+    &-right-close {
+      width: 162px;
+      height: 135px;
+    }
+
+    // анимация на открытие - движение к центру и тряска
+    &-left-close.animate-open {
+      transform: scale(115%);
+      animation: move-left-to-center 1s ease-in-out forwards,
+        shaker 1.5s linear 1.1s forwards;
+    }
+    &-right-close.animate-open {
+      transform: scale(115%);
+      animation: move-right-to-center 1s ease-in-out forwards,
+        shaker 1.5s linear 1.1s forwards;
+    }
+
+    // сами анимации
+    @keyframes move-left-to-center {
+      100% {
+        right: 50%;
+        transform: translateX(50%) scale(115%);
+      }
+    }
+    @keyframes move-right-to-center {
+      100% {
+        left: 50%;
+        transform: translateX(-50%) scale(115%);
+      }
+    }
+    // открытая шкатулка
+    &-left-open,
+    &-right-open {
+      width: 162px;
+      height: 190px;
+      transform: scale(115%);
+      animation: fadeOutOpen 1s 1s forwards;
+    }
+  }
+
+  // подарок
+  .gift {
+    position: relative;
+    top: -200px;
+    width: auto;
+    height: auto;
+    max-height: 200px;
+    scale: 0;
+    transition: scale 1s, transform 1s, opacity 1s, visibility 1s;
+    opacity: 0;
+    visibility: hidden;
+  }
 }

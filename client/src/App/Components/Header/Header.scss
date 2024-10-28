@@ -7,3 +7,15 @@
     font-family: Zelda, Monocraft, Courier, sans-serif;
   }
 }
+
+//mob
+@media screen and (max-width: 968px) {
+  .header-container {
+    padding: 30px 0;
+    text-align: center;
+    .header {
+      font-size: 44px;
+      text-shadow: 1px 0px 0px white, 5px 0px 0px #7f0077, 0px 0px 20px #00d6ff;
+    }
+  }
+}

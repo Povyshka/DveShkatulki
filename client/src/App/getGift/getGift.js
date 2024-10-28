@@ -35,7 +35,7 @@ export function getGift() {
     { url: "photo.png", name: "Впечатляющий фотоаппарат!" },
     { url: "pickles.png", name: "Превосходная банка головокружительных солёных огурцов!" },
     { url: "pigeon.png", name: "Редкостный голубь!" },
-    { url: "ploskogubcy.png", name: "Искулючительные плоскогубцы!" },
+    { url: "ploskogubcy.png", name: "Исключительные плоскогубцы!" },
     { url: "pokeball.png", name: "Эффектный покебол!" },
     { url: "popcorn.png", name: "Феноменальный попкорн!" },
     { url: "pumpkin.png", name: "Роскошная хэллоуинская тыква!" },
