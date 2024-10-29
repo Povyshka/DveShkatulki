@@ -47,8 +47,8 @@
 
 @media screen and (max-width: 968px) {
   .main-container {
-    gap: 15px;
-    min-height: 233px;
+    gap: 20px;
+    min-height: 250px;
     justify-content: space-between;
   
     .title,
@@ -64,10 +64,14 @@
     .shkatulkas-container {
       margin-top: 20px;
       gap: 10px;
-      max-height: 250px;
+      max-height: 230px;
     }
     .gift-container {
-      height: 250px;
+      height: 230px;
     }
+    .shkatulka-wrapper {
+      max-height: 230px;
+    }
+
   }
 }

@@ -17,6 +17,9 @@
   @media screen and (max-width: 968px) {
     max-width: 100%;
   }
+  @media screen and (max-width: 400px) {
+    padding-inline: 16px;
+  }
 }
 .content {
   width: 100%;

@@ -27,6 +27,9 @@
   top: 20%;
   position: absolute;
   display: inline-block;
+  @media screen and (max-width: 968px) {
+    top: 30%;
+  }
 }
 
 .typed-text {
@@ -39,6 +42,13 @@
   animation-delay: 1s;
   &.second {
     animation-delay: 2s;
+  }
+
+  @media screen and (max-width: 968px) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: 380px) {
+    font-size: 12px;
   }
 }
 
