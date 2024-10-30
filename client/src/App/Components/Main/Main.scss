@@ -4,6 +4,9 @@
   align-items: center;
   width: 100%;
   gap: 20px;
+  min-height: 500px;
+  justify-content: space-between;
+
 
   .title,
   .gift-name,
@@ -49,12 +52,11 @@
   .main-container {
     gap: 20px;
     min-height: 250px;
-    justify-content: space-between;
   
     .title,
     .gift-name,
     .under-title-gift {
-      font-size: 17px;
+      font-size: 16px;
   
       .under-title-show {
         font-size: 12px;
@@ -67,7 +69,7 @@
       max-height: 230px;
     }
     .gift-container {
-      height: 230px;
+      height: 200px;
     }
     .shkatulka-wrapper {
       max-height: 230px;

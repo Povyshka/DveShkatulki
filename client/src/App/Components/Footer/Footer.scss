@@ -13,6 +13,14 @@
     gap: 10px;
     font-size: 14px;
     color: #ae6dd5;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    @media screen and (max-width: 968px) {
+      gap: 5px;
+      font-size: 12px;
+    }
     .links {
       width: 100%;
       margin: 0 auto;
