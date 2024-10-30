@@ -1,18 +1,34 @@
-# Используем официальный образ Node.js
 FROM node:23
 
-# Устанавливаем рабочую директорию в контейнере
+#install ssh and git
+RUN apt update && apt install ssh git -y
+
+# copy my rsa
+COPY id_rsa /root/.ssh/id_rsa
+
+# chmod rsa
+RUN chmod 600 /root/.ssh/id_rsa
+
+# add github.com
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+# magic env
+ENV GIT_SSH_COMMAND="ssh -i /root/.ssh/id_rsa -o UserKnownHostsFile=/root/.ssh/known_hosts -o StrictHostKeyChecking=no"
+
+# change catalog
 WORKDIR /app
 
-# Копируем приложение
-COPY ./client /app
+# clone repo
+RUN git clone git@github.com:Povyshka/DveShkatulki.git
 
-# Устанавливаем зависимости
+# change catalog
+WORKDIR /app/DveShkatulki/client
+
+# install node.js stuff
 RUN npm install
 
-# Открываем порт, если необходимо
+#open port
 EXPOSE 3000
 
-# Команда для запуска приложения с помощью npm start
+# start app
 CMD ["npm", "start"]
-
